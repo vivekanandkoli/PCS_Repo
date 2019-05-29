@@ -87,7 +87,7 @@ public class Create_EDO_Import_Page
 		vd.WebEle_Consignee=driver.findElement(By.id("ctl00_hldPage_txtconsignee"));
 		vd.WebEle_Consignee.sendKeys(Consignee); 
 		
-		
+		System.out.println(Consignee);
 		
 		vd.WebEle_Consignee_Address=driver.findElement(By.id("ctl00_hldPage_txtConsigneeAdress"));
 		vd.WebEle_Consignee_Address.sendKeys(Consignee_Address);
@@ -103,8 +103,6 @@ public class Create_EDO_Import_Page
 		
 		vd.WebEle_Volume=driver.findElement(By.id("ctl00_hldPage_txtGrossVol"));
 		vd.WebEle_Volume.sendKeys(Volume);
-		
-		System.out.println(Volume);
 		
 		vd.WebEle_Vessel_Name=driver.findElement(By.id("ctl00_hldPage_txtVSLName"));
 		vd.WebEle_Vessel_Name.sendKeys(Vessel_Name);

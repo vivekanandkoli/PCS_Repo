@@ -104,7 +104,7 @@ public class Create_EDO_Import_Page
 		vd.WebEle_Volume=driver.findElement(By.id("ctl00_hldPage_txtGrossVol"));
 		vd.WebEle_Volume.sendKeys(Volume);
 		
-		System.out.println(Volume);
+		System.out.println(Consignee);
 		
 		vd.WebEle_Vessel_Name=driver.findElement(By.id("ctl00_hldPage_txtVSLName"));
 		vd.WebEle_Vessel_Name.sendKeys(Vessel_Name);
