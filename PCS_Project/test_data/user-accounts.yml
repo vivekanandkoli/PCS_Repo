@@ -1,0 +1,14 @@
+# User Details test data
+
+login_FrieghtForwarder:
+    entity_FrieghtForwarder: "Freight Forwarder"
+    username_FrieghtForwarder: frieght
+    password_FrieghtForwarder: "12345678"
+    
+
+login2:
+    email: akshay@gmail.com
+    password: pass
+
+   
+    
