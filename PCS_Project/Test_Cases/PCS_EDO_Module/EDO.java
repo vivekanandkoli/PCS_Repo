@@ -26,17 +26,24 @@ public class EDO extends BaseClass
 	@BeforeClass
 	public void ReadData_UserDetails() throws Exception
 	{
+
+		
 		TestDataReader tdr=TestDataReaderFactory.getInstance().open("test_data\\user-accounts.yml");
 		TestDataCollection tdc=tdr.getCollection("login_FrieghtForwarder");		
 		vd.drpEntity_FrieghtForwarder=tdc.getString("entity_FrieghtForwarder");
 		vd.username_FrieghtForwarder=tdc.getString("username_FrieghtForwarder");
 		vd.password_FrieghtForwarder=tdc.getString("password_FrieghtForwarder");
 		
-//		PropertiesFileReader pfr=new PropertiesFileReader();
-//		pfr.loadPropertiesFile();
-//		vd.s = new SimpleDateFormat("dd.MM.yyyy").format(Calendar.getInstance().getTime());
-//		vd.folderpath = pfr.getPropertyValue("Report_folder_path")+vd.s;
-//      vd.ExcelSavePath = rw.foldercreate(vd.folderpath);        
+		
+		
+		
+		PropertiesFileReader pfr=new PropertiesFileReader();
+		pfr.loadPropertiesFile();
+		vd.s = new SimpleDateFormat("dd.MM.yyyy").format(Calendar.getInstance().getTime());
+		vd.folderpath = pfr.getPropertyValue("Report_folder_path")+vd.s;
+		vd.ExcelSavePath = rw.foldercreate(vd.folderpath);   
+		
+		vd.TEST_File_Upload=pfr.getPropertyValue("TEST_UploadFilePath");
 	}	
 
 	@BeforeMethod
@@ -45,7 +52,7 @@ public class EDO extends BaseClass
 		PropertiesFileReader pfr=new PropertiesFileReader();
 		pfr.loadPropertiesFile();
 		String TestDataExcel=pfr.getPropertyValue("testdata_path");
-		vd.Notice1_UploadFilePath=pfr.getPropertyValue("Notice1_UploadFilePath");
+		vd.TEST_File_Upload=pfr.getPropertyValue("TEST_UploadFilePath");
 		ExcelFileReader efr=new ExcelFileReader(TestDataExcel);
 		String SheetName="EDO";
 		vd.i++;
@@ -79,6 +86,7 @@ public class EDO extends BaseClass
 		vd.Cargo_Description=efr.getCellData(SheetName, "Cargo_Description",vd.i);
 		vd.Marks_And_No=efr.getCellData(SheetName, "Marks_And_No",vd.i);
 		vd.Container_No=efr.getCellData(SheetName, "Container_No",vd.i);
+		vd.Container_Size=efr.getCellData(SheetName, "Container_Size",vd.i);
 		vd.Container_Type=efr.getCellData(SheetName, "Container_Type",vd.i);
 		vd.ISO_Code=efr.getCellData(SheetName, "ISO_Code",vd.i);
 		vd.Weight=efr.getCellData(SheetName, "Weight",vd.i);
@@ -92,12 +100,12 @@ public class EDO extends BaseClass
 		lp.login(vd.drpEntity_FrieghtForwarder,vd.username_FrieghtForwarder, vd.password_FrieghtForwarder);	
 		
 		Create_EDO_Import_Page Create_EDO=new Create_EDO_Import_Page(driver);
-		Create_EDO.Create_EDO(vd.Container_Line_Agent, vd.Container_Line_Agent_Code, vd.Vessel_Line_Agent,vd.Vessel_Line_Agent_Code, vd.Import_Manifest_No,
+		Create_EDO.Create_EDO(vd.SC_ID,vd.Description,vd.ExcelSavePath,vd.Container_Line_Agent, vd.Container_Line_Agent_Code, vd.Vessel_Line_Agent,vd.Vessel_Line_Agent_Code, vd.Import_Manifest_No,
 				vd.Import_Manifest_Date, vd.Bill_of_Lading_No, vd.Bill_of_Lading_Date, vd.Consignee,vd.Consignee_Address,
 				vd.Total_No_of_BL_Pkgs, vd.BL_Weight,vd.Volume, vd.Vessel_Name, vd.Voyage_No, vd.Berth_Date, vd.Berth_hour,
 				vd.Berth_Minutes, vd.Port_of_Loading, vd.Port_of_Discharge, vd.Final_Port_Delivery, vd.Delivery_Type,
 				vd.Shipment_Type, vd.Cargo_Type, vd.Total_Count_20,vd.Total_Count_40, vd.Total_Count_45, vd.Cargo_Description,
-				vd.Marks_And_No, vd.Container_No,vd.Container_Size, vd.Container_Type, vd.ISO_Code, vd.Weight, vd.Seal_No);
+				vd.Marks_And_No, vd.Container_No,vd.Container_Size, vd.Container_Type, vd.ISO_Code, vd.Weight, vd.Seal_No,vd.TEST_File_Upload);
 		
 		
 	}

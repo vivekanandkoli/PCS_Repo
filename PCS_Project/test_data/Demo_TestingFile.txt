@@ -1,0 +1,27 @@
+http://10.22.2.91:8080/UPLIFT_SEZ/UI/UpliftLogin.aspx
+
+username- admin_123
+password-123456789
+
+
+
+
+
+
+
+
+Task Portal : http://10.22.2.31:8080/TaskPortal
+
+Review Portal : http://klsstg03/Products/testing/Lists/Review%20Log/ReviewLog.aspx
+Time Sheet : 
+http://klsstg03/Products/testing/Lists/Task%20Sheet/MyTasks.aspx
+
+Defect Portal :
+http://support.kalelogistics.in/
+
+
+
+Galaxy link
+http://10.22.2.71:8080/nahco/DashBoard.aspx
+UN:- kale
+PW:- password

@@ -25,7 +25,7 @@ public class Variables_Declaration
 	 
 	public String StartTime, EndTime, ScreenShotName, ScreenShotPath, ExptResult, ActResult_FALSE, ChkType, Element, ActResult_TRUE,
 	Status, ActResult, Duration, Statement_end_word, ActualResult, SC_ID,Description,Id, ExpectedResult, ActualResultTrue,
-	ActualResultFalse, filename;
+	ActualResultFalse, filename,TEST_File_Upload;
 	public int Srno=1,r=1;
 	
 	/**

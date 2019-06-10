@@ -19,10 +19,12 @@
 <fullyQualifiedTypeName name="org.kale.pcs.sdk.Variables_Declaration"/>
 <fullyQualifiedTypeName name="org.kale.pcs.utils.General_Methods"/>
 <fullyQualifiedTypeName name="org.kale.pcs.utils.Validate_Elements"/>
-<fullyQualifiedTypeName name="org.kale.pcs.pages.Create_EDO_Import_Page"/>
 <fullyQualifiedTypeName name="org.openqa.selenium.interactions.Actions"/>
 <fullyQualifiedTypeName name="org.openqa.selenium.WebElement"/>
-<fullyQualifiedTypeName name="org.openqa.selenium.By"/>
-<fullyQualifiedTypeName name="java.lang.Thread"/>
 <fullyQualifiedTypeName name="org.openqa.selenium.Keys"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.By"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.support.ui.WebDriverWait"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.support.ui.ExpectedConditions"/>
+<fullyQualifiedTypeName name="org.kale.pcs.pages.Create_EDO_Import_Page"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
 </qualifiedTypeNameHistroy>
