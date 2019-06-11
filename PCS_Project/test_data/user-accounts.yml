@@ -5,6 +5,9 @@ login_FrieghtForwarder:
     username_FrieghtForwarder: frieght
     password_FrieghtForwarder: "12345678"
     
-
+login_ShippingLine:
+    entity_ShippingLine: "Shipping Line"
+    username_ShippingLine: crowley123
+    password_ShippingLine: "12345678"
    
     

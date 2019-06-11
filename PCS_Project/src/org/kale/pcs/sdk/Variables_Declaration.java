@@ -33,7 +33,8 @@ public class Variables_Declaration
 	 */
 	
 	public String 
-	drpEntity_FrieghtForwarder,username_FrieghtForwarder,password_FrieghtForwarder;
+	drpEntity_FrieghtForwarder,username_FrieghtForwarder,password_FrieghtForwarder,
+	drpEntity_ShippingLine,username_ShippingLine,password_ShippingLine;
 	
 	/**
 	 * @category   Variables of Create EDO Page
@@ -74,7 +75,13 @@ public class Variables_Declaration
 	Container_Type,
 	ISO_Code,
 	Weight,
-	Seal_No;
+	Seal_No,
+	Invoice_No,
+	Invoice_Date,
+	Charge_Head,
+	Exchange_Currency_Amt,
+	Currency,
+	Exchange_Rate;
 
 	public boolean Enable_ContainerNo,Detain,QuickSearch;
 	

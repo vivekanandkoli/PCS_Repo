@@ -8,7 +8,8 @@ import org.kale.pcs.TestDataReaders.PropertiesFileReader;
 import org.kale.pcs.TestDataReaders.TestDataCollection;
 import org.kale.pcs.TestDataReaders.TestDataReader;
 import org.kale.pcs.TestDataReaders.TestDataReaderFactory;
-import org.kale.pcs.pages.Create_EDO_Import_Page;
+import org.kale.pcs.pages.Create_EDO_ImportPage_FF_Login;
+import org.kale.pcs.pages.Create_EDO_ImportPage_SL_Login;
 import org.kale.pcs.pages.LoginPage;
 import org.kale.pcs.sdk.BaseClass;
 import org.kale.pcs.sdk.Variables_Declaration;
@@ -29,11 +30,15 @@ public class EDO extends BaseClass
 
 		
 		TestDataReader tdr=TestDataReaderFactory.getInstance().open("test_data\\user-accounts.yml");
-		TestDataCollection tdc=tdr.getCollection("login_FrieghtForwarder");		
-		vd.drpEntity_FrieghtForwarder=tdc.getString("entity_FrieghtForwarder");
-		vd.username_FrieghtForwarder=tdc.getString("username_FrieghtForwarder");
-		vd.password_FrieghtForwarder=tdc.getString("password_FrieghtForwarder");
+		TestDataCollection tdc_FF=tdr.getCollection("login_FrieghtForwarder");		
+		vd.drpEntity_FrieghtForwarder=tdc_FF.getString("entity_FrieghtForwarder");
+		vd.username_FrieghtForwarder=tdc_FF.getString("username_FrieghtForwarder");
+		vd.password_FrieghtForwarder=tdc_FF.getString("password_FrieghtForwarder");
 		
+		TestDataCollection tdc_SL=tdr.getCollection("login_ShippingLine");		
+		vd.drpEntity_ShippingLine=tdc_SL.getString("entity_ShippingLine");
+		vd.username_ShippingLine=tdc_SL.getString("username_ShippingLine");
+		vd.password_ShippingLine=tdc_SL.getString("password_ShippingLine");
 		
 		
 		
@@ -90,7 +95,14 @@ public class EDO extends BaseClass
 		vd.Container_Type=efr.getCellData(SheetName, "Container_Type",vd.i);
 		vd.ISO_Code=efr.getCellData(SheetName, "ISO_Code",vd.i);
 		vd.Weight=efr.getCellData(SheetName, "Weight",vd.i);
-		vd.Seal_No=efr.getCellData(SheetName, "Seal_No",vd.i);		
+		vd.Seal_No=efr.getCellData(SheetName, "Seal_No",vd.i);
+		
+		vd.Invoice_No=efr.getCellData(SheetName, "Invoice_No",vd.i);
+		vd.Invoice_Date=efr.getCellData(SheetName, "Invoice_Date",vd.i);
+		vd.Charge_Head=efr.getCellData(SheetName, "Charge_Head",vd.i);
+		vd.Exchange_Currency_Amt=efr.getCellData(SheetName, "Exchange_Currency_Amt",vd.i);
+		vd.Currency=efr.getCellData(SheetName, "Currency",vd.i);
+		vd.Seal_No=efr.getCellData(SheetName, "Exchange_Rate",vd.i);
 	}
 
 	@Test
@@ -99,15 +111,31 @@ public class EDO extends BaseClass
 		LoginPage lp=new LoginPage(driver);
 		lp.login(vd.drpEntity_FrieghtForwarder,vd.username_FrieghtForwarder, vd.password_FrieghtForwarder);	
 		
-		Create_EDO_Import_Page Create_EDO=new Create_EDO_Import_Page(driver);
-		Create_EDO.Create_EDO(vd.SC_ID,vd.Description,vd.ExcelSavePath,vd.Container_Line_Agent, vd.Container_Line_Agent_Code, vd.Vessel_Line_Agent,vd.Vessel_Line_Agent_Code, vd.Import_Manifest_No,
+		Create_EDO_ImportPage_FF_Login Create_EDO_FL=new Create_EDO_ImportPage_FF_Login(driver);
+		Create_EDO_FL.Create_EDO(vd.SC_ID,vd.Description,vd.ExcelSavePath,vd.Container_Line_Agent, vd.Container_Line_Agent_Code, vd.Vessel_Line_Agent,vd.Vessel_Line_Agent_Code, vd.Import_Manifest_No,
 				vd.Import_Manifest_Date, vd.Bill_of_Lading_No, vd.Bill_of_Lading_Date, vd.Consignee,vd.Consignee_Address,
 				vd.Total_No_of_BL_Pkgs, vd.BL_Weight,vd.Volume, vd.Vessel_Name, vd.Voyage_No, vd.Berth_Date, vd.Berth_hour,
 				vd.Berth_Minutes, vd.Port_of_Loading, vd.Port_of_Discharge, vd.Final_Port_Delivery, vd.Delivery_Type,
 				vd.Shipment_Type, vd.Cargo_Type, vd.Total_Count_20,vd.Total_Count_40, vd.Total_Count_45, vd.Cargo_Description,
 				vd.Marks_And_No, vd.Container_No,vd.Container_Size, vd.Container_Type, vd.ISO_Code, vd.Weight, vd.Seal_No,vd.TEST_File_Upload);
 		
+		Create_EDO_FL.Logout();
 		
 	}
+	
+	@Test(dependsOnMethods="Login_FF")
+	public void Login_ShippingLine() throws Exception
+	{
+		LoginPage lp=new LoginPage(driver);
+		lp.login(vd.drpEntity_FrieghtForwarder,vd.username_FrieghtForwarder, vd.password_FrieghtForwarder);	
+		
+		Create_EDO_ImportPage_SL_Login Create_EDO_SL=new Create_EDO_ImportPage_SL_Login(driver);
+		Create_EDO_SL.Create_EDO(vd.SC_ID, vd.Description, vd.ExcelSavePath, vd.Invoice_No,
+				vd.Invoice_Date, vd.Charge_Head, vd.Exchange_Currency_Amt, vd.Currency, 
+				vd.Exchange_Rate);
+		
+		
+	}
+	
 }
 
